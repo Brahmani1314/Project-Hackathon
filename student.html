@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h2>Student Dashboard</h2>
+    <nav><a href="index.html">Home</a><a href="#" onclick="studentLogout()">Logout</a></nav>
+</header>
+<main class="dashboard">
+    <h1 id="welcomeStudent">Welcome Student</h1>
+    <p class="muted">Choose a subject to attend its examination.</p>
+    <section class="student-exam-card">
+        <h2>Available Subjects</h2>
+        <label for="studentSubject">Select Subject</label>
+        <select id="studentSubject"></select>
+        <p id="subjectQuestionCount" class="muted"></p>
+        <button type="button" onclick="startExam()">Start Selected Exam</button>
+    </section>
+    <section class="student-exam-card">
+        <h2>My Results</h2>
+        <p>View your previous subject-wise examination results.</p>
+        <button type="button" onclick="viewResult()">View Results</button>
+    </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

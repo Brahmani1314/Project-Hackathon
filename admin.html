@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | Online Examination System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h2>Online Examination System</h2>
+    <nav><a href="index.html">Home</a></nav>
+</header>
+
+<main>
+    <section class="form-container auth-container" id="adminAuth">
+        <div class="auth-tabs">
+            <button type="button" class="tab-button active" id="showAdminLogin">Admin Login</button>
+            <button type="button" class="tab-button" id="showAdminSignup">Admin Signup</button>
+        </div>
+
+        <div id="adminLoginSection">
+            <h2>Admin Login</h2>
+            <p class="muted">Sign in to manage subjects, questions and student results.</p>
+            <form id="adminLoginForm">
+                <label for="adminLoginEmail">Email</label>
+                <input type="email" id="adminLoginEmail" required autocomplete="username">
+                <label for="adminLoginPassword">Password</label>
+                <input type="password" id="adminLoginPassword" required autocomplete="current-password">
+                <button type="submit">Login as Admin</button>
+            </form>
+        </div>
+
+        <div id="adminSignupSection" hidden>
+            <h2>Create Admin Account</h2>
+            <p class="muted">Register an administrator account for this browser.</p>
+            <form id="adminSignupForm">
+                <label for="adminSignupName">Full Name</label>
+                <input type="text" id="adminSignupName" required>
+                <label for="adminSignupEmail">Email</label>
+                <input type="email" id="adminSignupEmail" required>
+                <label for="adminSignupPassword">Password</label>
+                <input type="password" id="adminSignupPassword" minlength="6" required>
+                <label for="adminSignupConfirm">Confirm Password</label>
+                <input type="password" id="adminSignupConfirm" minlength="6" required>
+                <button type="submit">Create Admin Account</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="admin-container" id="adminDashboard" hidden>
+        <div class="dashboard-heading">
+            <div>
+                <p class="eyebrow">ADMIN CONTROL PANEL</p>
+                <h1 id="adminWelcome">Admin Dashboard</h1>
+                <p class="muted">Manage subjects and their question banks from one place.</p>
+            </div>
+            <button type="button" class="secondary-button" onclick="adminLogout()">Logout</button>
+        </div>
+
+        <div class="stats-grid">
+            <article class="stat-card"><span>Total Subjects</span><strong id="totalSubjects">0</strong></article>
+            <article class="stat-card"><span>Total Questions</span><strong id="totalQuestions">0</strong></article>
+            <article class="stat-card"><span>Registered Students</span><strong id="totalStudents">0</strong></article>
+            <article class="stat-card"><span>Exam Attempts</span><strong id="totalAttempts">0</strong></article>
+        </div>
+
+        <section class="admin-section">
+            <h2>1. Create New Subject</h2>
+            <p class="muted">For example: Java, Python, DBMS, Operating Systems or Computer Networks.</p>
+            <form id="subjectForm" class="inline-form">
+                <div class="field-grow">
+                    <label for="subjectName">Subject Name</label>
+                    <input type="text" id="subjectName" placeholder="Enter a subject name" required>
+                </div>
+                <button type="submit">Add Subject</button>
+            </form>
+            <div id="subjectList" class="subject-list"></div>
+        </section>
+
+        <section class="admin-section">
+            <h2>2. Add Questions to a Subject</h2>
+            <form id="questionForm">
+                <label for="questionSubject">Choose Subject</label>
+                <select id="questionSubject" required></select>
+
+                <label for="questionText">Question</label>
+                <textarea id="questionText" rows="2" required></textarea>
+
+                <div class="option-grid">
+                    <div><label for="optionA">Option A</label><input id="optionA" required></div>
+                    <div><label for="optionB">Option B</label><input id="optionB" required></div>
+                    <div><label for="optionC">Option C</label><input id="optionC" required></div>
+                    <div><label for="optionD">Option D</label><input id="optionD" required></div>
+                </div>
+
+                <label for="correctAnswer">Correct Answer</label>
+                <select id="correctAnswer" required>
+                    <option value="">Select correct option</option>
+                    <option value="A">Option A</option>
+                    <option value="B">Option B</option>
+                    <option value="C">Option C</option>
+                    <option value="D">Option D</option>
+                </select>
+                <button type="submit">Save Question</button>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <div class="section-heading">
+                <div><h2>3. Question Bank</h2><p class="muted">Filter questions by subject. You can edit or delete each question.</p></div>
+                <select id="filterQuestionSubject" aria-label="Filter questions by subject"></select>
+            </div>
+            <div id="adminQuestions"></div>
+        </section>
+
+        <section class="admin-section">
+            <h2>4. Student Results</h2>
+            <div class="section-heading">
+                <p class="muted">View exam attempts with subject-wise scores.</p>
+                <select id="filterResultSubject" aria-label="Filter results by subject"></select>
+            </div>
+            <div id="adminResults"></div>
+        </section>
+    </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
